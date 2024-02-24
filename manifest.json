@@ -1,7 +1,6 @@
 {
   "name": "Book Searcher",
   "description": "Search books information",
-  "default_locale": "en",
   "version": "0.1.0",
   "manifest_version": 3,
   "action": {

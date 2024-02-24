@@ -1,8 +1,9 @@
 import React from 'react'
 import { ResultJson } from '../@types/SearchResult'
-import Input from '@mui/material/Input'
+import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
+import Stack from '@mui/material/Stack'
 
 
 async function callApi(query: string): Promise<ResultJson> {
@@ -39,18 +40,18 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, setResult }) => {
   }
 
   return (
-    <>
-      <Input
+    <Stack direction="row" justifyContent="center" spacing={2}>
+      <OutlinedInput
         id="searchForm"
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
         }
+        size="small"
         onKeyDown={e => searchBooks(e)}
-        sx={{"width": "100%"}}
+        sx={{ "width": "90%" }}
       />
-    </>
+    </Stack>
   )
 }
-
