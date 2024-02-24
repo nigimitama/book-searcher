@@ -57,9 +57,7 @@ export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
   const filterResult = (result: ResultJson): JSX.Element[] => {
     if (Object.entries(result.items).length == 0) return [<></>]
 
-    const items = result.items.map(item =>
-      Book(item)
-    )
+    const items = result.items.map(item => Book(item))
     return items
   }
 
