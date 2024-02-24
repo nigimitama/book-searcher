@@ -1,4 +1,5 @@
 import { Item } from '../@types/SearchResult'
+import Link from '@mui/material/Link'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 
@@ -9,18 +10,24 @@ export const Book = (item: Item): JSX.Element => {
   const authors = (typeof (item.volumeInfo.authors) === "undefined") ? "" : item.volumeInfo.authors.join(", ")
 
   return (
-    <ListItem sx={{ "fontSize": "10px" }}>
+    <ListItem>
       <ListItemText
         primary={
-          <a href={item.volumeInfo.previewLink} target="_blank">
+          <Link
+            href={item.volumeInfo.previewLink}
+            target="_blank"
+            rel="noreferrer"
+            sx={{ fontSize: "14px" }}
+          >
             {item.volumeInfo.title}
-          </a>
+          </Link>
         }
         secondary={
           <>
             {authors} - {item.volumeInfo.publisher} {publishedYear}
           </>
         }
+        secondaryTypographyProps={{ sx: { fontSize: "12px" } }}
       />
     </ListItem>
   )
