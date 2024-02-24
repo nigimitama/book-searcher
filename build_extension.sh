@@ -7,4 +7,4 @@ cp icon.png dist/
 
 # zipにする（アップロード用）
 zip package.zip -r dist/
-# rm -r dist/
+rm -r dist/
