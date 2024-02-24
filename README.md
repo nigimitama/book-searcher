@@ -2,3 +2,4 @@
 
 書籍への引用文を取得するのに特化したGoogle ScholarみたいなChrome拡張
 
+![](images/screenshot-big.png)
