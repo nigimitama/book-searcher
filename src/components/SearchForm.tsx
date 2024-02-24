@@ -34,6 +34,8 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, setResult }) => {
 
     const form = document.getElementById("searchForm") as HTMLInputElement
     const query = form.value
+    if (query === "") return;
+
     setQuery(query)
     const searchResult = await callApi(query)
     setResult(searchResult)

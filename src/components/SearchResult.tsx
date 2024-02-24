@@ -16,10 +16,10 @@ export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
 
     const items: JSX.Element[] = []
     result.items.forEach(item => {
-      items.push(<Divider />)
       items.push(BookInfo(item))
+      items.push(<Divider />)
     })
-    // items.pop() // 最後のDividerだけ消す
+    items.pop() // 最後のDividerだけ消す
     return items
   }
 
