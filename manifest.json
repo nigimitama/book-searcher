@@ -1,6 +1,6 @@
 {
   "name": "Book Searcher",
-  "description": "Search books information",
+  "description": "書籍情報を検索できる拡張機能",
   "version": "0.1.0",
   "manifest_version": 3,
   "action": {

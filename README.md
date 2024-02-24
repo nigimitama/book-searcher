@@ -1,3 +1,4 @@
 # 書籍情報検索
 
-日本語書籍への引用文やbibtexを取得するのに特化したGoogle Scholarみたいなやつ
+書籍への引用文を取得するのに特化したGoogle ScholarみたいなChrome拡張
+
