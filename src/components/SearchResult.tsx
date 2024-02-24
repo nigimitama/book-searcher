@@ -1,33 +1,9 @@
 import React from 'react'
-
-
-type industryIdentifier = {
-  type: string,
-  identifier: string
-}
-
-type volumeInfo = {
-  title: string,
-  authors: Array<string>,
-  publisher: string,
-  publishedDate: string,
-  description: string,
-  industryIdentifiers: industryIdentifier,
-  previewLink: string,
-}
-
-type Item = {
-  kind: string,
-  id: string,
-  etag: string,
-  selfLink: string,
-  volumeInfo: volumeInfo,
-}
-
-export type ResultJson = {
-  kind: string,
-  items: Array<Item>
-}
+import { Item, ResultJson } from '../@types/SearchResult'
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import ListItemText from '@mui/material/ListItemText'
+import Divider from '@mui/material/Divider'
 
 
 const Book = (item: Item): JSX.Element => {
@@ -36,14 +12,18 @@ const Book = (item: Item): JSX.Element => {
   const authors = (typeof(item.volumeInfo.authors) === "undefined") ? "" : item.volumeInfo.authors.join(", ")
 
   return (
-    <div>
-      <div>
-        <a href={item.volumeInfo.previewLink}>{item.volumeInfo.title}</a>
-      </div>
-      <div>
-        {authors} - {item.volumeInfo.publisher} {publishedYear}
-      </div>
-    </div>
+    <ListItem sx={{"fontSize": "10px"}}>
+      <ListItemText
+        primary={
+          <a href={item.volumeInfo.previewLink}>{item.volumeInfo.title}</a>
+        }
+        secondary={
+          <>
+            {authors} - {item.volumeInfo.publisher} {publishedYear}
+          </>
+        }
+      />
+    </ListItem>
   )
 }
 
@@ -54,16 +34,21 @@ type SearchResultProps = {
 
 export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
 
-  const filterResult = (result: ResultJson): JSX.Element[] => {
+  const selectItems = (result: ResultJson): JSX.Element[] => {
     if (Object.entries(result.items).length == 0) return [<></>]
 
-    const items = result.items.map(item => Book(item))
+    const items: JSX.Element[] = []
+    result.items.forEach(item => {
+      items.push(Book(item))
+      items.push(<Divider/>)
+    })
+    items.pop() // 最後のDividerだけ消す
     return items
   }
 
   return (
     <>
-      {filterResult(result)}
+      <List>{selectItems(result)}</List>
     </>
   )
 }
