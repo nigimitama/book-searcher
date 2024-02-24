@@ -1,5 +1,6 @@
 import { Item } from '../@types/SearchResult'
 import Cite from 'citation-js'
+import human from 'humanparser'
 
 
 export const createCite = (item: Item, type: string): string => {
@@ -11,11 +12,17 @@ export const createCite = (item: Item, type: string): string => {
   }).trim()
 }
 
-const convertItemToCSL = (item: Item): Object => {
+
+type minimumCSL = {
+  author: authorInfo[],
+  issued: { 'date-parts': Array<string[]> },
+  title: string,
+  publisher: string
+}
+
+const convertItemToCSL = (item: Item): minimumCSL => {
   // Google Booksは姓名が分かれていないのでこうなる
-  const author = (item.volumeInfo.authors || [""]).map(author => {
-    return { "given": "", "family": author, "affiliation": [] }
-})
+  const author = (item.volumeInfo.authors || [""]).map(author => genAuthorInfo(author))
   const publishedYear = formatPublishedYear(item)
 
   return {
@@ -23,6 +30,22 @@ const convertItemToCSL = (item: Item): Object => {
     issued: { 'date-parts': [[publishedYear]] },
     title: item.volumeInfo.title,
     publisher: item.volumeInfo.publisher
+  }
+}
+
+
+type authorInfo = {
+  given: string,
+  family: string,
+  affiliation: string[]
+}
+
+const genAuthorInfo = (fullName: string) => {
+  const parts = human.parseName(fullName)
+  return {
+    given: parts.firstName,
+    family: parts.lastName,
+    affiliation: []
   }
 }
 
