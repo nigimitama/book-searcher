@@ -1,15 +1,15 @@
 import { useState } from 'react'
 import { SearchForm } from './components/SearchForm.tsx'
+import { SearchResult, ResultJson } from './components/SearchResult.tsx'
 
 function App() {
-  const [query, setQuery] = useState("")
+  const defaultResult: ResultJson = {kind: "", items: []}
+  const [result, setResult] = useState(defaultResult)
 
   return (
     <>
-      <SearchForm setQuery={setQuery} />
-      <p className="read-the-docs">
-        {query}
-      </p>
+      <SearchForm setResult={setResult} />
+      <SearchResult result={result} />
     </>
   )
 }
