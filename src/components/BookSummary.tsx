@@ -4,7 +4,7 @@ import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
 
 
-export const Book = (item: Item): JSX.Element => {
+export const BookSummary = (item: Item): JSX.Element => {
   const publishedDate = item.volumeInfo.publishedDate
   const publishedYear = (typeof (publishedDate) === "undefined") ? "" : publishedDate.slice(0, 4)
   const authors = (typeof (item.volumeInfo.authors) === "undefined") ? "" : item.volumeInfo.authors.join(", ")
