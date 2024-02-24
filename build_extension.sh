@@ -2,7 +2,6 @@
 npm run build
 
 # 必要なものをdistに移動
-cp -r _locales dist/
 cp manifest.json dist/
 # cp -r icons dist/
 

@@ -40,12 +40,15 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, setResult }) => {
 
   return (
     <>
-      <Input id="searchForm" onKeyDown={e => searchBooks(e)}
+      <Input
+        id="searchForm"
         startAdornment={
           <InputAdornment position="start">
             <SearchIcon />
           </InputAdornment>
         }
+        onKeyDown={e => searchBooks(e)}
+        sx={{"width": "100%"}}
       />
     </>
   )

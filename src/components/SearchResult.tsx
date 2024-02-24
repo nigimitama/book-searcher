@@ -15,7 +15,9 @@ const Book = (item: Item): JSX.Element => {
     <ListItem sx={{"fontSize": "10px"}}>
       <ListItemText
         primary={
-          <a href={item.volumeInfo.previewLink}>{item.volumeInfo.title}</a>
+          <a href={item.volumeInfo.previewLink} target="_blank">
+            {item.volumeInfo.title}
+          </a>
         }
         secondary={
           <>
