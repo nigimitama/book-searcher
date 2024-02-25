@@ -1,3 +1,4 @@
+#!bin/sh -eux
 # viteがbuildを行い、dist/に吐き出す
 npm run build
 
