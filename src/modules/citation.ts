@@ -35,8 +35,8 @@ const convertItemToCSL = (item: Item): minimumCSL => {
 
 
 type authorInfo = {
-  given: string,
-  family: string,
+  given: string | undefined,
+  family: string | undefined,
   affiliation: string[]
 }
 
