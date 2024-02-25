@@ -7,5 +7,9 @@ cp manifest.json dist/
 cp icon.png dist/
 
 # zipにする（アップロード用）
+if [ -e "package.zip" ]; then
+  rm "package.zip"
+fi
+
 zip package.zip -r dist/
 rm -r dist/
