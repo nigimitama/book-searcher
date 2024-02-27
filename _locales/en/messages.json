@@ -1,0 +1,6 @@
+{
+  "description": {
+    "message": "This extension helps searching book information.",
+    "description": "for the description field in manifest.json"
+  }
+}
