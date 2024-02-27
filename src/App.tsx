@@ -6,6 +6,7 @@ import { Footer } from './components/Footer'
 import { ResultJson } from './@types/SearchResult'
 import Divider from '@mui/material/Divider'
 import { Space } from './components/Space'
+import LinearProgress from '@mui/material/LinearProgress';
 
 
 
@@ -13,12 +14,14 @@ const App: FC = () => {
   const defaultResult: ResultJson = { kind: "", items: [] }
   const [result, setResult] = useState(defaultResult)
   const [query, setQuery] = useState("")
+  const [isSearching, setIsSearching] = useState(false)
 
   return (
     <>
       <Header />
       <Space height="10px"/>
-      <SearchForm setQuery={setQuery} result={result} setResult={setResult} />
+      <SearchForm setQuery={setQuery} result={result} setResult={setResult} setIsSearching={setIsSearching} />
+      { isSearching ? <LinearProgress /> : null }
       <SearchResult result={result} />
       <Space height="10px"/>
       <Divider />
