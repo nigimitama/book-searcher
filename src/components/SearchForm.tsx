@@ -52,7 +52,12 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult 
   }
 
   return (
-    <Stack direction="row" justifyContent="center" spacing={2}>
+    <Stack
+      direction="row"
+      justifyContent="center"
+      spacing={2}
+      sx={{ margin: "5px 0 5px 0" }}
+    >
       <SmallOutlinedInput
         id="searchForm"
         startAdornment={
