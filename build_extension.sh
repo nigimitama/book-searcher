@@ -13,4 +13,4 @@ if [ -e "package.zip" ]; then
 fi
 
 zip package.zip -r dist/
-rm -r dist/
+# rm -r dist/
