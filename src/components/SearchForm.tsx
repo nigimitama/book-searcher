@@ -21,9 +21,10 @@ type ResultProps = {
   setQuery: React.Dispatch<React.SetStateAction<string>>
   result: ResultJson
   setResult: React.Dispatch<React.SetStateAction<ResultJson>>
+  setIsSearching: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult }) => {
+export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult, setIsSearching }) => {
 
   /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */
   const FocusInputOnLoad = () => {
@@ -46,8 +47,10 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult 
     const query = input.value
     if (query === "") return;
 
+    setIsSearching(true)
     setQuery(query)
     const searchResult = await callApi(query)
+    setIsSearching(false)
     setResult(searchResult)
   }
 
