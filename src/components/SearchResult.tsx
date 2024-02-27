@@ -1,5 +1,5 @@
 import React from 'react'
-import { ResultJson } from '../@types/SearchResult'
+import { ResultJson, Item } from '../@types/SearchResult'
 import { BookInfo } from './BookInfo'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
@@ -11,24 +11,24 @@ type SearchResultProps = {
 
 export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
 
-  const BookInfoItems = (result: ResultJson): JSX.Element[] => {
-    if (Object.entries(result.items).length == 0) return [<div key={0}></div>]
+  const Books = (items: Item[]): JSX.Element[] => {
+    if (Object.entries(items).length == 0) return [<div key={0}></div>]
 
-    const items: JSX.Element[] = []
-    result.items.forEach(item => {
-      items.push(
+    const books: JSX.Element[] = []
+    items.forEach(item => {
+      books.push(
         <div key={item.id}>
           <Divider />
           {BookInfo(item)}
         </div>
       )
     })
-    return items
+    return books
   }
 
   return (
-    <>
-      <List>{BookInfoItems(result)}</List>
-    </>
+    <List>
+      {Books(result.items)}
+    </List>
   )
 }

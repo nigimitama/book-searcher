@@ -19,9 +19,9 @@ const App: FC = () => {
   return (
     <>
       <Header />
+      { isSearching ? <LinearProgress /> : null }
       <Space height="10px"/>
       <SearchForm setQuery={setQuery} result={result} setResult={setResult} setIsSearching={setIsSearching} />
-      { isSearching ? <LinearProgress /> : null }
       <SearchResult result={result} />
       <Space height="10px"/>
       <Divider />
