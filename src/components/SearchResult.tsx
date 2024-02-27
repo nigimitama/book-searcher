@@ -12,14 +12,17 @@ type SearchResultProps = {
 export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
 
   const BookInfoItems = (result: ResultJson): JSX.Element[] => {
-    if (Object.entries(result.items).length == 0) return [<></>]
+    if (Object.entries(result.items).length == 0) return [<div key={0}></div>]
 
     const items: JSX.Element[] = []
     result.items.forEach(item => {
-      items.push(BookInfo(item))
-      items.push(<Divider />)
+      items.push(
+        <div key={item.id}>
+          <Divider />
+          {BookInfo(item)}
+        </div>
+      )
     })
-    items.pop() // 最後のDividerだけ消す
     return items
   }
 
