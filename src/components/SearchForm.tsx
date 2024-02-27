@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ResultJson } from '../@types/SearchResult'
 import OutlinedInput from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
@@ -23,17 +23,31 @@ async function callApi(query: string): Promise<ResultJson> {
 
 type ResultProps = {
   setQuery: React.Dispatch<React.SetStateAction<string>>
+  result: ResultJson
   setResult: React.Dispatch<React.SetStateAction<ResultJson>>
 }
 
-export const SearchForm: React.FC<ResultProps> = ({ setQuery, setResult }) => {
+export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult }) => {
 
+  /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */ 
+  const FocusInputOnLoad = () => {
+    if (result.items.length != 0) return
+
+    const input = document.getElementById("searchForm") as HTMLInputElement
+    input.focus()
+  }
+
+  useEffect(() => {
+    FocusInputOnLoad()
+  }, [])
+
+
+  /* Enterが押されたら検索を実行する */
   async function searchBooks(event: React.KeyboardEvent) {
-    // Enterが押されたら検索を実行する
     if (event.key != "Enter") return;
 
-    const form = document.getElementById("searchForm") as HTMLInputElement
-    const query = form.value
+    const input = document.getElementById("searchForm") as HTMLInputElement
+    const query = input.value
     if (query === "") return;
 
     setQuery(query)

@@ -17,7 +17,7 @@ const App: FC = () => {
   return (
     <>
       <Header />
-      { (result.items.length === 0) ? <><Space height="10px"/><SearchForm setQuery={setQuery} setResult={setResult} /></> : null }
+      { (result.items.length === 0) ? <><Space height="10px"/><SearchForm setQuery={setQuery} result={result} setResult={setResult} /></> : null }
       <SearchResult result={result} />
       <Space height="10px"/>
       <Divider />
