@@ -1,7 +1,8 @@
 {
   "name": "Book Searcher",
-  "description": "書籍情報を検索できる拡張機能",
-  "version": "1.0.0",
+  "description": "__MSG_description__",
+  "default_locale": "ja",
+  "version": "1.1.0",
   "manifest_version": 3,
   "action": {
     "default_popup": "index.html"

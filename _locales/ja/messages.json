@@ -1,0 +1,6 @@
+{
+  "description": {
+    "message": "書籍の情報を検索できる拡張機能です。",
+    "description": "manifest.jsonのdescription用"
+  }
+}
