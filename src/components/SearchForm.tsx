@@ -1,24 +1,20 @@
 import React, { useEffect } from 'react'
 import { ResultJson } from '../@types/SearchResult'
 import OutlinedInput from '@mui/material/OutlinedInput'
+import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import Stack from '@mui/material/Stack'
+import { styled } from '@mui/material/styles';
+import { callApi } from '../modules/booksApi'
 
 
-async function callApi(query: string): Promise<ResultJson> {
-  const words = query.split(/\s+/)
-  const q = words.join("+")
-  const request = new Request(`https://www.googleapis.com/books/v1/volumes?q=${q}`)
-  const result = await fetch(request)
-    .then((response) => {
-      if (!response.ok) {
-        console.log(`ERROR ${response}`)
-      }
-      return response.json()
-    })
-  return result
-}
+const SmallOutlinedInput = styled(OutlinedInput)({
+  // input部分のpaddingを縮小
+  [`& .${outlinedInputClasses.input}`]: {
+    padding: "5px",
+  },
+})
 
 
 type ResultProps = {
@@ -29,7 +25,7 @@ type ResultProps = {
 
 export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult }) => {
 
-  /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */ 
+  /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */
   const FocusInputOnLoad = () => {
     if (result.items.length != 0) return
 
@@ -57,7 +53,7 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult 
 
   return (
     <Stack direction="row" justifyContent="center" spacing={2}>
-      <OutlinedInput
+      <SmallOutlinedInput
         id="searchForm"
         startAdornment={
           <InputAdornment position="start">
@@ -66,7 +62,7 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult 
         }
         size="small"
         onKeyDown={e => searchBooks(e)}
-        sx={{ "width": "90%" }}
+        sx={{ width: "90%", fontSize: 14 }}
       />
     </Stack>
   )
