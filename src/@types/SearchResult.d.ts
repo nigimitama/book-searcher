@@ -3,6 +3,11 @@ type industryIdentifier = {
   identifier: string
 }
 
+export type ImageLinks = {
+  smallThumbnail: string,
+  thumbnail: string
+}
+
 export type volumeInfo = {
   title: string,
   authors: Array<string>,
@@ -11,6 +16,7 @@ export type volumeInfo = {
   description: string,
   industryIdentifiers: industryIdentifier,
   previewLink: string,
+  imageLinks: ImageLinks
 }
 
 export type Item = {
