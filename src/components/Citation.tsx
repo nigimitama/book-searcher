@@ -58,7 +58,7 @@ export const CitationAccordion = ({ item }: CitationAccordionProps): JSX.Element
     <Stack direction="row" justifyContent="center" sx={{ width: "100%" }}>
       <Accordion elevation={2} sx={{ width: "95%" }}>
         <SmallAccordionSummary>
-          <span style={{ fontSize: "1em", margin: "0px", display: "inline-flex", alignItems: "center" }}>
+          <span style={{ fontSize: "0.85em", margin: "0px", display: "inline-flex", alignItems: "center" }}>
             <FormatQuoteIcon sx={{ fontSize: "1.2em" }} />
             Citation
           </span>
