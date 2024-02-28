@@ -12,7 +12,6 @@ export const createCite = (item: Item, type: string): string => {
   }).trim()
 }
 
-
 type minimumCSL = {
   author: authorInfo[],
   issued: { 'date-parts': Array<string[]> },
@@ -33,7 +32,6 @@ const convertItemToCSL = (item: Item): minimumCSL => {
   }
 }
 
-
 type authorInfo = {
   given: string | undefined,
   family: string | undefined,
@@ -43,12 +41,12 @@ type authorInfo = {
 const genAuthorInfo = (fullName: string) => {
   const parts = human.parseName(fullName)
   return {
-    given: parts.firstName,
+    given: [parts.firstName, parts.middleName].join(" "),
     family: parts.lastName,
+    suffix: parts.suffix,
     affiliation: []
   }
 }
-
 
 const formatPublishedYear = (item: Item): string => {
   const publishedDate = item.volumeInfo.publishedDate
