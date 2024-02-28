@@ -35,17 +35,6 @@ const CiteText = ({ label, value }: CiteTextProps) => {
   )
 }
 
-
-const Citation = (item: Item): JSX.Element => {
-  return (
-    <Stack spacing={2}>
-      <CiteText label="APA" value={createCite(item, "apa")} />
-      <CiteText label="Vancouver" value={createCite(item, "vancouver")} />
-      <CiteText label="Harvard" value={createCite(item, "harvard1")} />
-    </Stack>
-  )
-}
-
 // 余白を小さくしたcustom component
 const SmallAccordionSummary = styled(AccordionSummary)({
   [`&.${accordionSummaryClasses.gutters} .${accordionSummaryClasses.content}`]: {
@@ -60,8 +49,11 @@ const SmallAccordionSummary = styled(AccordionSummary)({
   },
 })
 
+type CitationAccordionProps = {
+  item: Item
+}
 
-export const CitationAccordion = (item: Item): JSX.Element => {
+export const CitationAccordion = ({ item }: CitationAccordionProps): JSX.Element => {
   return (
     <Stack direction="row" justifyContent="center" sx={{ width: "100%" }}>
       <Accordion elevation={2} sx={{ width: "95%" }}>
@@ -72,7 +64,11 @@ export const CitationAccordion = (item: Item): JSX.Element => {
           </span>
         </SmallAccordionSummary>
         <AccordionDetails>
-          {Citation(item)}
+          <Stack spacing={2}>
+            <CiteText label="APA" value={createCite(item, "apa")} />
+            <CiteText label="Vancouver" value={createCite(item, "vancouver")} />
+            <CiteText label="Harvard" value={createCite(item, "harvard1")} />
+          </Stack>
         </AccordionDetails>
       </Accordion>
     </Stack>

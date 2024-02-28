@@ -1,8 +1,9 @@
 import React from 'react'
 import { ResultJson, Item } from '../@types/SearchResult'
 import { BookInfo } from './BookInfo'
-import List from '@mui/material/List'
+import { CitationAccordion } from './Citation'
 import Divider from '@mui/material/Divider'
+import { Stack } from '@mui/material'
 
 
 type SearchResultProps = {
@@ -17,9 +18,9 @@ export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
     const books: JSX.Element[] = []
     items.forEach(item => {
       books.push(
-        <div key={item.id}>
-          <Divider />
-          {BookInfo(item)}
+        <div key={item.id} style={{ marginBottom: 10 }}>
+          <BookInfo item={item} />
+          <CitationAccordion item={item} />
         </div>
       )
     })
@@ -27,8 +28,8 @@ export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
   }
 
   return (
-    <List>
+    <Stack divider={<Divider />}>
       {Books(result.items)}
-    </List>
+    </Stack>
   )
 }
