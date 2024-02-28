@@ -16,7 +16,7 @@ type minimumCSL = {
   author: authorInfo[],
   issued: { 'date-parts': Array<string[]> },
   title: string,
-  publisher: string
+  publisher: string | undefined
 }
 
 const convertItemToCSL = (item: Item): minimumCSL => {
