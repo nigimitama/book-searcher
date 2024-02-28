@@ -4,7 +4,7 @@ npm run build
 
 # 必要なものをdistに移動
 cp manifest.json dist/
-cp icon.png dist/
+cp -r images/ dist/
 cp -r _locales dist/
 
 # zipにする（アップロード用）

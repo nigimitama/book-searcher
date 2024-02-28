@@ -4,4 +4,7 @@
 
 Chrome WebStore: [Book Searcher](https://chromewebstore.google.com/detail/book-searcher/phkdhohknijcjmbpdcginagjiahakcee?hl=ja)
 
-![](images/screenshot.png)
+![](docs/screenshot-640x400.png)
+
+![](docs/screenshot-1280x800.png)
+

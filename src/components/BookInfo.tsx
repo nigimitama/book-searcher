@@ -11,14 +11,15 @@ type BookInfoProps = {
 
 export const BookInfo = ({ item }: BookInfoProps): JSX.Element => {
   const publishedDate = item.volumeInfo.publishedDate
-  const publishedYear = (typeof (publishedDate) === "undefined") ? "" : publishedDate.slice(0, 4)
-  const authors = (typeof (item.volumeInfo.authors) === "undefined") ? "" : item.volumeInfo.authors.join(", ")
+  const publishedYear = (typeof publishedDate === "undefined") ? "" : publishedDate.slice(0, 4)
+  const authors = (typeof item.volumeInfo.authors === "undefined") ? "" : item.volumeInfo.authors.join(", ")
+  const imageUrl = (typeof item.volumeInfo.imageLinks === "undefined") ? "images/noimage.png" :item.volumeInfo.imageLinks.smallThumbnail
 
   return (
     <ListItem>
       <Stack direction="row" spacing={2}>
         <img
-          src={item.volumeInfo.imageLinks.smallThumbnail}
+          src={imageUrl}
           style={{ width: "50px" }}
         />
         <ListItemText

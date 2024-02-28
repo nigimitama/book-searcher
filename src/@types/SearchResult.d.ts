@@ -11,12 +11,12 @@ export type ImageLinks = {
 export type volumeInfo = {
   title: string,
   authors: Array<string>,
-  publisher: string,
+  publisher: string | undefined,
   publishedDate: string,
   description: string,
   industryIdentifiers: industryIdentifier,
   previewLink: string,
-  imageLinks: ImageLinks
+  imageLinks: ImageLinks | undefined
 }
 
 export type Item = {

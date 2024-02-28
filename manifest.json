@@ -8,6 +8,6 @@
     "default_popup": "index.html"
   },
   "icons": {
-    "128": "icon.png"
+    "128": "images/icon.png"
   }
 }
