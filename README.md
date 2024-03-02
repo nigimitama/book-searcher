@@ -6,5 +6,5 @@ Chrome WebStore: [Book Searcher](https://chromewebstore.google.com/detail/book-s
 
 ![](docs/screenshot-640x400.png)
 
-![](docs/screenshot-1280x800.png)
+![](docs/screenshot-640x400-2.png)
 
