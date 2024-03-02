@@ -5,8 +5,9 @@ import { outlinedInputClasses } from '@mui/material/OutlinedInput'
 import InputAdornment from '@mui/material/InputAdornment'
 import SearchIcon from '@mui/icons-material/Search'
 import Stack from '@mui/material/Stack'
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
 import { callApi } from '../modules/booksApi'
+import IconButton from '@mui/material/IconButton'
 
 
 const SmallOutlinedInput = styled(OutlinedInput)({
@@ -40,9 +41,12 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult,
 
 
   /* Enterが押されたら検索を実行する */
-  async function searchBooks(event: React.KeyboardEvent) {
+  function searchBooksByKey(event: React.KeyboardEvent) {
     if (event.key != "Enter") return;
+    searchBooks()
+  }
 
+  async function searchBooks() {
     const input = document.getElementById("searchForm") as HTMLInputElement
     const query = input.value
     if (query === "") return;
@@ -54,6 +58,7 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult,
     setResult(searchResult)
   }
 
+
   return (
     <Stack
       direction="row"
@@ -63,13 +68,15 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult,
     >
       <SmallOutlinedInput
         id="searchForm"
-        startAdornment={
-          <InputAdornment position="start">
-            <SearchIcon />
+        endAdornment={
+          <InputAdornment position="end">
+            <IconButton onClick={_ => searchBooks()}>
+              <SearchIcon />
+            </IconButton>
           </InputAdornment>
         }
         size="small"
-        onKeyDown={e => searchBooks(e)}
+        onKeyDown={e => searchBooksByKey(e)}
         sx={{ width: "90%", fontSize: 14 }}
       />
     </Stack>
