@@ -1,6 +1,6 @@
 import React from 'react'
 import Button from '@mui/material/Button'
-import FullscreenIcon from '@mui/icons-material/Fullscreen'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import Stack from '@mui/material/Stack'
 
 type FooterProps = {
@@ -24,9 +24,9 @@ export const Footer: React.FC<FooterProps> = ({ query }) => {
       <div>
         <a href={url(query)} target="_blank">
           <Button
-            variant="outlined"
+            variant="text"
             size="small"
-            startIcon={<FullscreenIcon />}
+            startIcon={<OpenInNewIcon />}
           >
             Open Google Books
           </Button>
