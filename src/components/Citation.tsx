@@ -2,12 +2,12 @@ import { Item } from '../@types/SearchResult'
 import TextField from '@mui/material/TextField'
 import { createCite } from '../modules/citation'
 import Stack from '@mui/material/Stack'
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
-import AccordionDetails from '@mui/material/AccordionDetails';
+import FormatQuoteIcon from '@mui/icons-material/FormatQuote'
+import Accordion from '@mui/material/Accordion'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import AccordionDetails from '@mui/material/AccordionDetails'
 import { accordionSummaryClasses } from '@mui/material/AccordionSummary'
-import { styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles'
 
 
 type CiteTextProps = {
