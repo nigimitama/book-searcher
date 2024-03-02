@@ -1,6 +1,6 @@
 import { Item } from '../@types/SearchResult'
 import TextField from '@mui/material/TextField'
-import { createCite } from '../modules/citation'
+import { citeFileUrl, createCite } from '../modules/citation'
 import Stack from '@mui/material/Stack'
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import Accordion from '@mui/material/Accordion';
@@ -8,6 +8,8 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import { accordionSummaryClasses } from '@mui/material/AccordionSummary'
 import { styled } from '@mui/material/styles';
+import Button from '@mui/material/Button';
+import DownloadIcon from '@mui/icons-material/Download';
 
 
 type CiteTextProps = {
@@ -32,6 +34,32 @@ const CiteText = ({ label, value }: CiteTextProps) => {
       multiline
       fullWidth
     />
+  )
+}
+
+
+type citeFileButtonProps = {
+  innerText: string
+  bookId: string,
+  citeFileType: string
+}
+
+const CiteFileButton = ({ innerText, bookId, citeFileType }: citeFileButtonProps): JSX.Element => {
+  return (
+    <Button
+      href={citeFileUrl(bookId, citeFileType)}
+      variant="outlined"
+      size="small"
+      sx={{
+        fontSize: "11px",
+        paddingTop: "2px",
+        paddingBottom: "2px",
+        textTransform: "none",
+      }}
+      startIcon={<DownloadIcon />}
+    >
+      {innerText}
+    </Button>
   )
 }
 
@@ -68,6 +96,12 @@ export const CitationAccordion = ({ item }: CitationAccordionProps): JSX.Element
             <CiteText label="APA" value={createCite(item, "apa")} />
             <CiteText label="Vancouver" value={createCite(item, "vancouver")} />
             <CiteText label="Harvard" value={createCite(item, "harvard1")} />
+
+            <Stack direction="row" spacing={1}>
+              <CiteFileButton innerText="BibTeX" bookId={item.id} citeFileType="bibtex" />
+              <CiteFileButton innerText="EndNote" bookId={item.id} citeFileType="enw" />
+              <CiteFileButton innerText="RefMan" bookId={item.id} citeFileType="ris" />
+            </Stack>
           </Stack>
         </AccordionDetails>
       </Accordion>
