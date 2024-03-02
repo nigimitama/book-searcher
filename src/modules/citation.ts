@@ -53,3 +53,8 @@ const formatPublishedYear = (item: Item): string => {
   const publishedYear = (typeof (publishedDate) === "undefined") ? "" : publishedDate.slice(0, 4)
   return publishedYear
 }
+
+
+export const citeFileUrl = (bookId: string, format: string) => {
+  return `https://books.google.com/books?id=${bookId}&output=${format}`
+}
