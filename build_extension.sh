@@ -1,4 +1,9 @@
 #!bin/sh -eux
+
+if [ -e "dist/" ]; then
+  rm -r dist/
+fi
+
 # viteがbuildを行い、dist/に吐き出す
 npm run build
 
