@@ -3,6 +3,7 @@ import { Item } from '../@types/SearchResult'
 import Link from '@mui/material/Link'
 import ListItem from '@mui/material/ListItem'
 import ListItemText from '@mui/material/ListItemText'
+import { formatTitle, formatPublishedYear } from '../modules/citation'
 
 
 type BookInfoProps = {
@@ -10,8 +11,8 @@ type BookInfoProps = {
 }
 
 export const BookInfo = ({ item }: BookInfoProps): JSX.Element => {
-  const publishedDate = item.volumeInfo.publishedDate
-  const publishedYear = (typeof publishedDate === "undefined") ? "" : publishedDate.slice(0, 4)
+  const publishedYear = formatPublishedYear(item)
+  const title = formatTitle(item)
   const authors = (typeof item.volumeInfo.authors === "undefined") ? "" : item.volumeInfo.authors.join(", ")
   const imageUrl = (typeof item.volumeInfo.imageLinks === "undefined") ? "images/noimage.png" :item.volumeInfo.imageLinks.smallThumbnail
 
@@ -30,7 +31,7 @@ export const BookInfo = ({ item }: BookInfoProps): JSX.Element => {
               rel="noreferrer"
               sx={{ fontSize: "14px" }}
             >
-              {item.volumeInfo.title}
+              {title}
             </Link>
           }
           secondary={

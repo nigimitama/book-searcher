@@ -10,6 +10,7 @@ export type ImageLinks = {
 
 export type volumeInfo = {
   title: string,
+  subtitle: string | undefined,
   authors: Array<string>,
   publisher: string | undefined,
   publishedDate: string,

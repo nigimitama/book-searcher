@@ -8,7 +8,7 @@ export const createCite = (item: Item, type: string): string => {
   const cite = new Cite(csl)
   return cite.format('bibliography', {
     format: 'text',
-    template: type // "apa", 
+    template: type // "apa"など
   }).trim()
 }
 
@@ -21,12 +21,13 @@ type minimumCSL = {
 
 const convertItemToCSL = (item: Item): minimumCSL => {
   const author = (item.volumeInfo.authors || [""]).map(author => genAuthorInfo(author))
+  const title = formatTitle(item)
   const publishedYear = formatPublishedYear(item)
 
   return {
     author: author,
     issued: { 'date-parts': [[publishedYear]] },
-    title: item.volumeInfo.title,
+    title: title,
     publisher: item.volumeInfo.publisher
   }
 }
@@ -47,7 +48,15 @@ const genAuthorInfo = (fullName: string) => {
   }
 }
 
-const formatPublishedYear = (item: Item): string => {
+export const formatTitle = (item: Item) => {
+  if (typeof item.volumeInfo.subtitle === "undefined") {
+    return item.volumeInfo.title
+  } else {
+    return `${item.volumeInfo.title}: ${item.volumeInfo.subtitle}`
+  }
+}
+
+export const formatPublishedYear = (item: Item): string => {
   const publishedDate = item.volumeInfo.publishedDate
   const publishedYear = (typeof (publishedDate) === "undefined") ? "" : publishedDate.slice(0, 4)
   return publishedYear
