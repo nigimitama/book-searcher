@@ -20,7 +20,6 @@ type minimumCSL = {
 }
 
 const convertItemToCSL = (item: Item): minimumCSL => {
-  // Google Booksは姓名が分かれていないのでこうなる
   const author = (item.volumeInfo.authors || [""]).map(author => genAuthorInfo(author))
   const publishedYear = formatPublishedYear(item)
 
