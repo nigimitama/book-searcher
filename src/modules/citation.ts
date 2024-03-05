@@ -41,7 +41,7 @@ type authorInfo = {
 const genAuthorInfo = (fullName: string) => {
   const parts = human.parseName(fullName)
   return {
-    given: [parts.firstName, parts.middleName].join(" "),
+    given: [parts.firstName, parts.middleName].join(" ").trim(),
     family: parts.lastName,
     suffix: parts.suffix,
     affiliation: []
