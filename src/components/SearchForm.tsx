@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { ResultJson } from "../@types/SearchResult"
 import OutlinedInput from "@mui/material/OutlinedInput"
 import { outlinedInputClasses } from "@mui/material/OutlinedInput"
@@ -24,17 +24,20 @@ type ResultProps = {
 }
 
 export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult, setIsSearching }) => {
+  const [focused, setFocused] = useState<boolean>(false)
+
   /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */
   const FocusInputOnLoad = () => {
     if (result.items.length != 0) return
 
     const input = document.getElementById("searchForm") as HTMLInputElement
     input.focus()
+    setFocused(true)
   }
 
   useEffect(() => {
-    FocusInputOnLoad()
-  }, [])
+    if (!focused) FocusInputOnLoad()
+  })
 
   /* Enterが押されたら検索を実行する */
   function searchBooksByKey(event: React.KeyboardEvent) {
