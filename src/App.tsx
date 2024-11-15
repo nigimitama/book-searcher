@@ -20,7 +20,7 @@ const App: FC = () => {
       {isSearching ? <LinearProgress /> : null}
       <Space height="10px" />
       <SearchForm setQuery={setQuery} result={result} setResult={setResult} setIsSearching={setIsSearching} />
-      <SearchResult result={result} query={query} />
+      <SearchResult result={result} />
       {result.errorMessage ? (
         <></>
       ) : (
