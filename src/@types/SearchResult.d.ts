@@ -31,6 +31,7 @@ export type Item = {
 export type ResultJson = {
   kind: string
   items: Array<Item>
+  errorMessage?: string
 }
 
 export type SearchResultProps = {

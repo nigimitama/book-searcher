@@ -20,10 +20,16 @@ const App: FC = () => {
       {isSearching ? <LinearProgress /> : null}
       <Space height="10px" />
       <SearchForm setQuery={setQuery} result={result} setResult={setResult} setIsSearching={setIsSearching} />
-      <SearchResult result={result} />
-      <Space height="10px" />
-      <Divider />
-      <Space height="10px" />
+      <SearchResult result={result} query={query} />
+      {result.errorMessage ? (
+        <></>
+      ) : (
+        <>
+          <Space height="10px" />
+          <Divider />
+          <Space height="10px" />
+        </>
+      )}
       <Footer query={query} />
       <Space height="10px" />
     </>

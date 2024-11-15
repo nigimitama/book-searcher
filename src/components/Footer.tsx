@@ -3,11 +3,11 @@ import Button from "@mui/material/Button"
 import OpenInNewIcon from "@mui/icons-material/OpenInNew"
 import Stack from "@mui/material/Stack"
 
-type FooterProps = {
+type LinkToGoogleBooks = {
   query: string
 }
 
-export const Footer: React.FC<FooterProps> = ({ query }) => {
+export const LinkToGoogleBooks: React.FC<LinkToGoogleBooks> = ({ query }) => {
   const url = (query: string): string => {
     if (query == "") {
       return "https://books.google.com/"
@@ -19,14 +19,22 @@ export const Footer: React.FC<FooterProps> = ({ query }) => {
   }
 
   return (
+    <a href={url(query)} target="_blank">
+      <Button variant="text" size="small" startIcon={<OpenInNewIcon />}>
+        Open Google Books
+      </Button>
+    </a>
+  )
+}
+
+type FooterProps = {
+  query: string
+}
+
+export const Footer: React.FC<FooterProps> = ({ query }) => {
+  return (
     <Stack direction="row" justifyContent="center" spacing={2}>
-      <div>
-        <a href={url(query)} target="_blank">
-          <Button variant="text" size="small" startIcon={<OpenInNewIcon />}>
-            Open Google Books
-          </Button>
-        </a>
-      </div>
+      <LinkToGoogleBooks query={query} />
     </Stack>
   )
 }
