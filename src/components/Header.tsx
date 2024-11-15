@@ -1,17 +1,12 @@
-import React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-
+import React from "react"
+import AppBar from "@mui/material/AppBar"
+import Toolbar from "@mui/material/Toolbar"
 
 export const Header: React.FC = () => {
   return (
-    <AppBar
-      position="static"
-    >
+    <AppBar position="static">
       <Toolbar variant="dense">
-        <span style={{ fontSize: 18, fontWeight: 600 }}>
-          Book Searcher
-        </span>
+        <span style={{ fontSize: 18, fontWeight: 600 }}>Book Searcher</span>
       </Toolbar>
     </AppBar>
   )

@@ -1,35 +1,35 @@
 type industryIdentifier = {
-  type: string,
+  type: string
   identifier: string
 }
 
 export type ImageLinks = {
-  smallThumbnail: string,
+  smallThumbnail: string
   thumbnail: string
 }
 
 export type volumeInfo = {
-  title: string,
-  subtitle: string | undefined,
-  authors: Array<string>,
-  publisher: string | undefined,
-  publishedDate: string,
-  description: string,
-  industryIdentifiers: industryIdentifier,
-  previewLink: string,
+  title: string
+  subtitle: string | undefined
+  authors: Array<string>
+  publisher: string | undefined
+  publishedDate: string
+  description: string
+  industryIdentifiers: industryIdentifier
+  previewLink: string
   imageLinks: ImageLinks | undefined
 }
 
 export type Item = {
-  kind: string,
-  id: string,
-  etag: string,
-  selfLink: string,
-  volumeInfo: volumeInfo,
+  kind: string
+  id: string
+  etag: string
+  selfLink: string
+  volumeInfo: volumeInfo
 }
 
 export type ResultJson = {
-  kind: string,
+  kind: string
   items: Array<Item>
 }
 

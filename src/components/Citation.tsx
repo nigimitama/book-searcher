@@ -1,19 +1,18 @@
-import { Item } from '../@types/SearchResult'
-import TextField from '@mui/material/TextField'
-import { citeFileUrl, createCite } from '../modules/citation'
-import Stack from '@mui/material/Stack'
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote'
-import Accordion from '@mui/material/Accordion'
-import AccordionSummary from '@mui/material/AccordionSummary'
-import AccordionDetails from '@mui/material/AccordionDetails'
-import { accordionSummaryClasses } from '@mui/material/AccordionSummary'
-import { styled } from '@mui/material/styles'
-import Button from '@mui/material/Button'
-import DownloadIcon from '@mui/icons-material/Download'
-
+import { Item } from "../@types/SearchResult"
+import TextField from "@mui/material/TextField"
+import { citeFileUrl, createCite } from "../modules/citation"
+import Stack from "@mui/material/Stack"
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote"
+import Accordion from "@mui/material/Accordion"
+import AccordionSummary from "@mui/material/AccordionSummary"
+import AccordionDetails from "@mui/material/AccordionDetails"
+import { accordionSummaryClasses } from "@mui/material/AccordionSummary"
+import { styled } from "@mui/material/styles"
+import Button from "@mui/material/Button"
+import DownloadIcon from "@mui/icons-material/Download"
 
 type CiteTextProps = {
-  label: string,
+  label: string
   value: string
 }
 
@@ -28,8 +27,8 @@ const CiteText = ({ label, value }: CiteTextProps) => {
           fontSize: "12px",
           lineHeight: "1.1em",
           padding: "0px",
-          margin: "0px"
-        }
+          margin: "0px",
+        },
       }}
       multiline
       fullWidth
@@ -37,10 +36,9 @@ const CiteText = ({ label, value }: CiteTextProps) => {
   )
 }
 
-
 type citeFileButtonProps = {
   innerText: string
-  bookId: string,
+  bookId: string
   citeFileType: string
 }
 
@@ -70,7 +68,7 @@ const SmallAccordionSummary = styled(AccordionSummary)({
   },
   [`&.${accordionSummaryClasses.root}`]: {
     minHeight: "1.8em",
-    paddingLeft: "5px"
+    paddingLeft: "5px",
   },
   [`&.${accordionSummaryClasses.expanded}`]: {
     minHeight: "3em",
@@ -86,7 +84,14 @@ export const CitationAccordion = ({ item }: CitationAccordionProps): JSX.Element
     <Stack direction="row" justifyContent="center" sx={{ width: "100%" }}>
       <Accordion elevation={2} sx={{ width: "95%" }}>
         <SmallAccordionSummary>
-          <span style={{ fontSize: "0.85em", margin: "0px", display: "inline-flex", alignItems: "center" }}>
+          <span
+            style={{
+              fontSize: "0.85em",
+              margin: "0px",
+              display: "inline-flex",
+              alignItems: "center",
+            }}
+          >
             <FormatQuoteIcon sx={{ fontSize: "1.2em" }} />
             Citation
           </span>

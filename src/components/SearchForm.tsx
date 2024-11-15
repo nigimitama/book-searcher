@@ -1,14 +1,13 @@
-import React, { useEffect } from 'react'
-import { ResultJson } from '../@types/SearchResult'
-import OutlinedInput from '@mui/material/OutlinedInput'
-import { outlinedInputClasses } from '@mui/material/OutlinedInput'
-import InputAdornment from '@mui/material/InputAdornment'
-import SearchIcon from '@mui/icons-material/Search'
-import Stack from '@mui/material/Stack'
-import { styled } from '@mui/material/styles'
-import { callApi } from '../modules/booksApi'
-import IconButton from '@mui/material/IconButton'
-
+import React, { useEffect } from "react"
+import { ResultJson } from "../@types/SearchResult"
+import OutlinedInput from "@mui/material/OutlinedInput"
+import { outlinedInputClasses } from "@mui/material/OutlinedInput"
+import InputAdornment from "@mui/material/InputAdornment"
+import SearchIcon from "@mui/icons-material/Search"
+import Stack from "@mui/material/Stack"
+import { styled } from "@mui/material/styles"
+import { callApi } from "../modules/booksApi"
+import IconButton from "@mui/material/IconButton"
 
 const SmallOutlinedInput = styled(OutlinedInput)({
   // input部分のpaddingを縮小
@@ -16,7 +15,6 @@ const SmallOutlinedInput = styled(OutlinedInput)({
     padding: "5px",
   },
 })
-
 
 type ResultProps = {
   setQuery: React.Dispatch<React.SetStateAction<string>>
@@ -26,7 +24,6 @@ type ResultProps = {
 }
 
 export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult, setIsSearching }) => {
-
   /* 画面のロード時にinputがフォーカスされてすぐに検索できる状態にする */
   const FocusInputOnLoad = () => {
     if (result.items.length != 0) return
@@ -39,17 +36,16 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult,
     FocusInputOnLoad()
   }, [])
 
-
   /* Enterが押されたら検索を実行する */
   function searchBooksByKey(event: React.KeyboardEvent) {
-    if (event.key != "Enter") return;
+    if (event.key != "Enter") return
     searchBooks()
   }
 
   async function searchBooks() {
     const input = document.getElementById("searchForm") as HTMLInputElement
     const query = input.value
-    if (query === "") return;
+    if (query === "") return
 
     setIsSearching(true)
     setQuery(query)
@@ -58,25 +54,19 @@ export const SearchForm: React.FC<ResultProps> = ({ setQuery, result, setResult,
     setResult(searchResult)
   }
 
-
   return (
-    <Stack
-      direction="row"
-      justifyContent="center"
-      spacing={2}
-      sx={{ margin: "5px 0 5px 0" }}
-    >
+    <Stack direction="row" justifyContent="center" spacing={2} sx={{ margin: "5px 0 5px 0" }}>
       <SmallOutlinedInput
         id="searchForm"
         endAdornment={
           <InputAdornment position="end">
-            <IconButton onClick={_ => searchBooks()}>
+            <IconButton onClick={(_) => searchBooks()}>
               <SearchIcon />
             </IconButton>
           </InputAdornment>
         }
         size="small"
-        onKeyDown={e => searchBooksByKey(e)}
+        onKeyDown={(e) => searchBooksByKey(e)}
         sx={{ width: "90%", fontSize: 14 }}
       />
     </Stack>
