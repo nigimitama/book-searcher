@@ -30,8 +30,10 @@ const CiteText = ({ label, value }: CiteTextProps) => {
           margin: "0px",
         },
       }}
-      multiline
       fullWidth
+      // NOTE: multiline={true} で rowsが未指定だと無限に再レンダリングするバグがある
+      multiline
+      rows={2}
     />
   )
 }
