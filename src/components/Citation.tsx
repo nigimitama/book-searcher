@@ -11,10 +11,7 @@ import { styled } from "@mui/material/styles"
 import Button from "@mui/material/Button"
 import DownloadIcon from "@mui/icons-material/Download"
 
-type CiteTextProps = {
-  label: string
-  value: string
-}
+type CiteTextProps = { label: string; value: string }
 
 const CiteText = ({ label, value }: CiteTextProps) => {
   return (
@@ -22,14 +19,7 @@ const CiteText = ({ label, value }: CiteTextProps) => {
       label={label}
       defaultValue={value}
       InputProps={{ size: "small" }}
-      inputProps={{
-        style: {
-          fontSize: "12px",
-          lineHeight: "1.1em",
-          padding: "0px",
-          margin: "0px",
-        },
-      }}
+      inputProps={{ style: { fontSize: "12px", lineHeight: "1.1em", padding: "0px", margin: "0px" } }}
       fullWidth
       // NOTE: multiline={true} で rowsが未指定だと無限に再レンダリングするバグがある
       multiline
@@ -38,24 +28,15 @@ const CiteText = ({ label, value }: CiteTextProps) => {
   )
 }
 
-type citeFileButtonProps = {
-  innerText: string
-  bookId: string
-  citeFileType: string
-}
+type citeFileButtonProps = { innerText: string; bookId: string; citeFileType: string }
 
-const CiteFileButton = ({ innerText, bookId, citeFileType }: citeFileButtonProps): JSX.Element => {
+const CiteFileButton = ({ innerText, bookId, citeFileType }: citeFileButtonProps): React.JSX.Element => {
   return (
     <Button
       href={citeFileUrl(bookId, citeFileType)}
       variant="outlined"
       size="small"
-      sx={{
-        fontSize: "11px",
-        paddingTop: "2px",
-        paddingBottom: "2px",
-        textTransform: "none",
-      }}
+      sx={{ fontSize: "11px", paddingTop: "2px", paddingBottom: "2px", textTransform: "none" }}
       startIcon={<DownloadIcon />}
     >
       {innerText}
@@ -65,35 +46,19 @@ const CiteFileButton = ({ innerText, bookId, citeFileType }: citeFileButtonProps
 
 // 余白を小さくしたcustom component
 const SmallAccordionSummary = styled(AccordionSummary)({
-  [`&.${accordionSummaryClasses.gutters} .${accordionSummaryClasses.content}`]: {
-    margin: "0px",
-  },
-  [`&.${accordionSummaryClasses.root}`]: {
-    minHeight: "1.8em",
-    paddingLeft: "5px",
-  },
-  [`&.${accordionSummaryClasses.expanded}`]: {
-    minHeight: "3em",
-  },
+  [`&.${accordionSummaryClasses.gutters} .${accordionSummaryClasses.content}`]: { margin: "0px" },
+  [`&.${accordionSummaryClasses.root}`]: { minHeight: "1.8em", paddingLeft: "5px" },
+  [`&.${accordionSummaryClasses.expanded}`]: { minHeight: "3em" },
 })
 
-type CitationAccordionProps = {
-  item: Item
-}
+type CitationAccordionProps = { item: Item }
 
-export const CitationAccordion = ({ item }: CitationAccordionProps): JSX.Element => {
+export const CitationAccordion = ({ item }: CitationAccordionProps): React.JSX.Element => {
   return (
     <Stack direction="row" justifyContent="center" sx={{ width: "100%" }}>
       <Accordion elevation={2} sx={{ width: "95%" }}>
         <SmallAccordionSummary>
-          <span
-            style={{
-              fontSize: "0.85em",
-              margin: "0px",
-              display: "inline-flex",
-              alignItems: "center",
-            }}
-          >
+          <span style={{ fontSize: "0.85em", margin: "0px", display: "inline-flex", alignItems: "center" }}>
             <FormatQuoteIcon sx={{ fontSize: "1.2em" }} />
             Citation
           </span>

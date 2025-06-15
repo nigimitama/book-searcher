@@ -5,10 +5,10 @@ import { CitationAccordion } from "./Citation"
 import Divider from "@mui/material/Divider"
 import { Alert, Stack } from "@mui/material"
 
-const Books = ({ items }: { items: Item[] }): JSX.Element[] => {
+const Books = ({ items }: { items: Item[] }): React.JSX.Element[] => {
   if (Object.entries(items).length == 0) return [<div key={0}></div>]
 
-  const books: JSX.Element[] = []
+  const books: React.JSX.Element[] = []
   items.forEach((item) => {
     books.push(
       <div key={item.id} style={{ marginBottom: 10 }}>
@@ -20,9 +20,7 @@ const Books = ({ items }: { items: Item[] }): JSX.Element[] => {
   return books
 }
 
-type SearchResultProps = {
-  result: ResultJson
-}
+type SearchResultProps = { result: ResultJson }
 
 export const SearchResult: React.FC<SearchResultProps> = ({ result }) => {
   return (

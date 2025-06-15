@@ -5,11 +5,9 @@ import ListItem from "@mui/material/ListItem"
 import ListItemText from "@mui/material/ListItemText"
 import { formatTitle, formatPublishedYear } from "../modules/citation"
 
-type BookInfoProps = {
-  item: Item
-}
+type BookInfoProps = { item: Item }
 
-export const BookInfo = ({ item }: BookInfoProps): JSX.Element => {
+export const BookInfo = ({ item }: BookInfoProps): React.JSX.Element => {
   const publishedYear = formatPublishedYear(item)
   const title = formatTitle(item)
   const authors = typeof item.volumeInfo.authors === "undefined" ? "" : item.volumeInfo.authors.join(", ")
